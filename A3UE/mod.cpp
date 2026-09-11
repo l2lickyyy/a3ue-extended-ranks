@@ -1,5 +1,7 @@
-name = "A3 Antistasi Ultimate Extender example";
-author = "A3-Antistasi dev team, A3-Antistasi Ultimate dev team";
-tooltip = "Antistasi Ultimate Extender example";
+name = "A3UE Extended Ranks";
+author = "l2lickyyy";
+tooltip = "A3UE Extended Ranks";
+tooltipOwned = "A3UE Extended Ranks";
+overview = "Overrides Antistasi Ultimate player ranks with a custom ladder, custom insignias, promotion hints, and rank-aware player UI.";
 actionName = "GitHub";
-action = "https://github.com/Westalgie/A3UExtender"
+action = "https://github.com/Antistasi-Ultimate-Community/A3-Antistasi-Ultimate";

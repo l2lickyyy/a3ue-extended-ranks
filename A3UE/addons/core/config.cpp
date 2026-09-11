@@ -8,15 +8,10 @@ class CfgPatches
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3A_core", "A3A_ultimate"};
+        requiredAddons[] = {"A3A_core"};
         author = AUTHOR;
         authors[] = { AUTHORS };
         authorUrl = "";
         VERSION_CONFIG;
     };
-};
-
-class A3A // remove this block if you're not adding params for your extender
-{
-    #include "Params.hpp"
 };

@@ -1,2 +1,4 @@
 protocol = 1;
-publishedid = -1; //ToDo add mod publisheID
+publishedid = 3711728487;
+name = "A3UE - Extended Ranks";
+timestamp = 5250872928311134448;

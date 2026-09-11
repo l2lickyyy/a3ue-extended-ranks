@@ -1,25 +1,132 @@
 class CfgFunctions 
 {
-    //be careful when overwriting functions as version updates can break your extension
     class A3A 
     {
-        class Missions 
+        class Base
         {
-            class AS_Official 
+            class numericRank
             {
-                file = QPATHTOFOLDER(Missions\fn_as_Official.sqf);
+                file = QPATHTOFOLDER(A3A\Base\fn_numericRank.sqf);
+            };
+            class statistics
+            {
+                file = QPATHTOFOLDER(A3A\Base\fn_statistics.sqf);
+            };
+        };
+
+        class GUI
+        {
+            class playerTab
+            {
+                file = QPATHTOFOLDER(A3A\GUI\fn_playerTab.sqf);
+            };
+        };
+
+        class OrgPlayers
+        {
+            class promotePlayer
+            {
+                file = QPATHTOFOLDER(A3A\OrgPlayers\fn_promotePlayer.sqf);
+            };
+            class ranksMP
+            {
+                file = QPATHTOFOLDER(A3A\OrgPlayers\fn_ranksMP.sqf);
+            };
+            class theBossTransfer
+            {
+                file = QPATHTOFOLDER(A3A\OrgPlayers\fn_theBossTransfer.sqf);
+            };
+        };
+
+        class CREATE
+        {
+            class createUnit
+            {
+                file = QPATHTOFOLDER(A3A\CREATE\fn_createUnit.sqf);
+            };
+            class spawnGroup
+            {
+                file = QPATHTOFOLDER(A3A\CREATE\fn_spawnGroup.sqf);
+            };
+            class rivalsSpawnGroup
+            {
+                file = QPATHTOFOLDER(A3A\CREATE\fn_rivalsSpawnGroup.sqf);
+            };
+        };
+
+        class Save
+        {
+            class loadPlayer
+            {
+                file = QPATHTOFOLDER(A3A\Save\fn_loadPlayer.sqf);
+            };
+            class savePlayer
+            {
+                file = QPATHTOFOLDER(A3A\Save\fn_savePlayer.sqf);
+            };
+            class resetPlayer
+            {
+                file = QPATHTOFOLDER(A3A\Save\fn_resetPlayer.sqf);
+            };
+        };
+
+        class proxy
+        {
+            class onPlayerRespawn
+            {
+                file = QPATHTOFOLDER(A3A\proxy\fn_onPlayerRespawn.sqf);
+            };
+        };
+
+        class init
+        {
+            class tags
+            {
+                file = QPATHTOFOLDER(A3A\init\fn_tags.sqf);
             };
         };
     };
 
-    //your own functions should be kept here
-    class ADDON
+    class SCRT
     {
-        class Events 
-        { //these two functions are used to demonstrate use of events
-            file = QPATHTOFOLDER(Events);
-            class addExampleEventListener { postInit = 1; };
-            class AIVehInit {};
+        class Common
+        {
+            class common_getPromotionThreshold
+            {
+                file = QPATHTOFOLDER(SCRT\Common\fn_common_getPromotionThreshold.sqf);
+            };
+        };
+    };
+
+    class a3ue_extended_ranks
+    {
+        class Ranks
+        {
+            file = QPATHTOFOLDER(Ranks);
+            class registerClientHandlers { postInit = 1; };
+            class handlePlayerLoad {};
+            class refreshLocalUi {};
+            class applyRankState {};
+            class getRankSyncUnits {};
+            class getRankData {};
+            class getRankIndex {};
+            class getRankByIndex {};
+            class getRankByScore {};
+            class getPromotionThreshold {};
+            class getEffectiveRank {};
+            class getEngineRank {};
+            class getRankFromEngineRank {};
+            class getDisplayName {};
+            class getShortDisplayName {};
+            class getUndercoverStatus {};
+            class getStoredCustomRank {};
+            class isPetros {};
+            class reconcileRespawnRankState {};
+            class getTexture {};
+            class getPromotionInsigniaPath {};
+            class getAiRankRole {};
+            class getWeightedAiRank {};
+            class applyAiRankState {};
         };
     };
 };

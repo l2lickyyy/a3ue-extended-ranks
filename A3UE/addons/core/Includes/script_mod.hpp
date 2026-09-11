@@ -16,11 +16,11 @@
 #endif
 
 #ifndef AUTHOR
-    #define AUTHOR "Antistasi Dev Team"
+    #define AUTHOR "breadServer"
 #endif
 #ifndef AUTHORS
 // sepperate authors with a comma
-    #define AUTHORS "Antistasi Dev Team"
+    #define AUTHORS "breadServer"
 #endif
 
 #include "script_macros.hpp"

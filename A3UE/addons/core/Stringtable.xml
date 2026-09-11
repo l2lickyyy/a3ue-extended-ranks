@@ -1,35 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="A3-Antistasi">
-    <Package name="A3UE-Your-Extender-Name">
-        <Key ID="STR_A3UE_params_YourExtenderName_ParamName">
-            <Original>This is the name of your parameter.</Original>
-            <French>Add localization here</French>
-            <Russian>Add localization here</Russian>
-            <German>Add localization here</German>
-            <Czech>Add localization here</Czech>
-            <Chinesesimp>Add localization here</Chinesesimp>
-            <Korean>Add localization here</Korean>
-            <Italian>Add localization here</Italian>
-            <Portuguese>Add localization here</Portuguese>
-            <Spanish>Add localization here</Spanish>
-            <Japanese>Add localization here</Japanese>
-            <Polish>Add localization here</Polish>
-            <Turkish>Add localization here</Turkish>
-        </Key>
-        <Key ID="STR_A3UE_params_YourExtenderName_ParamName_desc">
-            <Original>This is the extended description of your parameter and its values, shown when hovering the mouse over the param name in the UI.</Original>
-            <French>Add localization here</French>
-            <Russian>Add localization here</Russian>
-            <German>Add localization here</German>
-            <Czech>Add localization here</Czech>
-            <Chinesesimp>Add localization here</Chinesesimp>
-            <Korean>Add localization here</Korean>
-            <Italian>Add localization here</Italian>
-            <Portuguese>Add localization here</Portuguese>
-            <Spanish>Add localization here</Spanish>
-            <Japanese>Add localization here</Japanese>
-            <Polish>Add localization here</Polish>
-            <Turkish>Add localization here</Turkish>
-        </Key>
+<Project name="A3UE Extended Ranks">
+    <Package name="Ranks">
+        <Container name="Ranks">
+            <Key ID="STR_A3UER_RANK_PRIVATE">
+                <Original>Private</Original>
+                <English>Private</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_PRIVATE_FIRST_CLASS">
+                <Original>Private First Class</Original>
+                <English>Private First Class</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_CORPORAL">
+                <Original>Corporal</Original>
+                <English>Corporal</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_SERGEANT">
+                <Original>Sergeant</Original>
+                <English>Sergeant</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_STAFF_SERGEANT">
+                <Original>Staff Sergeant</Original>
+                <English>Staff Sergeant</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_SERGEANT_MAJOR">
+                <Original>Sergeant Major</Original>
+                <English>Sergeant Major</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_SECOND_LIEUTENANT">
+                <Original>2nd Lieutenant</Original>
+                <English>2nd Lieutenant</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_FIRST_LIEUTENANT">
+                <Original>1st Lieutenant</Original>
+                <English>1st Lieutenant</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_CAPTAIN">
+                <Original>Captain</Original>
+                <English>Captain</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_MAJOR">
+                <Original>Major</Original>
+                <English>Major</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_LIEUTENANT_COLONEL">
+                <Original>Lieutenant Colonel</Original>
+                <English>Lieutenant Colonel</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_COLONEL">
+                <Original>Colonel</Original>
+                <English>Colonel</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_BRIGADIER_GENERAL">
+                <Original>Brigadier General</Original>
+                <English>Brigadier General</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_MAJOR_GENERAL">
+                <Original>Major General</Original>
+                <English>Major General</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_LIEUTENANT_GENERAL">
+                <Original>Lieutenant General</Original>
+                <English>Lieutenant General</English>
+            </Key>
+            <Key ID="STR_A3UER_RANK_GENERAL">
+                <Original>General</Original>
+                <English>General</English>
+            </Key>
+        </Container>
     </Package>
 </Project>

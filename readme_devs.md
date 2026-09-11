@@ -68,65 +68,6 @@
 
   - You will always do things better the second and third time. Do not be afraid to re-do things if you aren't happy with the result.
 
-  - Lets take the TFAR compatible SCR-536 Radio that me and Zelo designed for WW2 templates as an example.
-
-  ---
-
-  > First Attempt - Prototype. (Get the idea down.)
-  ![image](images/radio_1.png)
-
-  ---
-
-  > Second Attempt - Iteration. (Make it work.)
-  ![image](images/radio_2.png)
-
-  ---
-
-  > Third Attempt - Refinement. (Make it work, and look nice.)
-  ![image](images/radio_3.png)
-
-  ---
-
-  - Another example is when I was making STALKER Anomalies spawn across the entire map.
-
-  ---
-
-  > First Attempt - Prototype.
-  ![image](images/anom_1.png)
-
-  ---
-
-  > Second Attempt - Iteration. An extra 0 can cause... undesired outcomes.
-  ![image](images/anom_2.png)
-
-  ---
-
-  > Third Attempt - Refinement.
-  ![image](images/anom_3.png)
-
-  ---
-
-  - Yet another example that many people have not seen, so you have this luxury!
-
-  ---
-
-  > The first attempt.
-  ![image](images/logo_1.png)
-  
-  ---
-
-  > The second attempt.
-  ![image](images/logo_2.png)
-
-  - We did not settle on these logo designs because it was deemed they were too similar to Antistasi Community and Antistasi Plus.
-
-  ---
-
-  > Even more attempts before we finally settled on attempt_7 and attempt_9. The first 4 were designed by stutpip.
-  ![image](images/logo_3.png)
-
-  ---
-
   ### Just because you can do something, does not mean you should.
 
   - If a piece of code (or anything) does not immediately explain the reason why it exists, document it.
@@ -341,7 +282,7 @@
 
   - Use Addon Builder, HEMTT, Mikeros Tools, PboProject. Literally anything but PBOManager.
 
-  - In the case of Antistasi and this extender example, use the install/build.ps1 files or the vscode method in the initial readme.md.
+  - For Extended Ranks, use Build.ps1 or the Arma Dev method in readme.md. The recovered source is already prepared; do not rerun initial setup.
 
   ### Antistasi is mostly an open project. "Reverse engineering" is your friend.
 
@@ -349,22 +290,7 @@
 
   ### Get a solid idea of what you want to do.
 
-  - Making a faction? Plan it out in the editor. Make loadouts. Put down vehicles for each category. See my theoretical faction designs before they were made.
-
-  ---
-
-  > Monolith/Military Concept
-  ![image](images/faction_1.png)
-
-  ---
-
-  > Clear Sky/Freedom Concept
-  ![image](images/faction_2.png)
-
-  ---
-
-  > Western Loyalist Concept
-  ![image](images/faction_3.png)
+  - Plan the behavior and dependencies before implementing a feature.
 
   ### Be reasonable with mod usage.
 
@@ -392,8 +318,8 @@
 
   - This will allow people to run it on servers that use key signature verifications.
 
-  - Use DSSignFile in Arma 3 Tools to generate a key (it will give you two):
+  - Use DSCreateKey to generate a key pair, DSSignFile to sign, and DSCheckSignatures to verify. See readme.md for this project's commands:
     - `bikey` - this is the one you distribute with your addon.
     - `biprivatekey` - you use this one to sign. As the name implies, keep it private.
     - PBO files are signed with the `biprivatekey`.
-    - The `bikey` should be copied into your `@Addon\keys` folder.
+    - Copy the public `bikey` into the chosen build output's `Keys` folder. Keep the private key outside the project.
