@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.paa -text
+*.exe -text
+*.dll -text
+*.bikey -text
+*.biprivatekey -text
+*.pbo -text
+*.bisign -text
+**/$PBOPREFIX$ -text
