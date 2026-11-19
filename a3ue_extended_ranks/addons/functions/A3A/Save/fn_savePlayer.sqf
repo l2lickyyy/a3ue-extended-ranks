@@ -21,5 +21,5 @@ private _customRank = [_body] call a3ue_extended_ranks_fnc_getStoredCustomRank;
 private _arguments = +_this;
 _arguments set [3, [_plugins, _customRank] call a3ue_extended_ranks_fnc_encodeRankSave];
 // Upstream retains responsibility for score, native rank, equipment, money,
-// garage data, validation, and the A3A_core_saveUUID acknowledgement.
+// garage data, and validation. Ultimate's save loop collects client plugin data.
 _arguments call _original

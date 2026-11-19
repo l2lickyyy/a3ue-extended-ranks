@@ -8,7 +8,7 @@
 #define QUOTE(var1) #var1
 #define QDOUBLES(var1,var2) QUOTE(DOUBLES(var1,var2))
 #define ADDON DOUBLES(PREFIX,COMPONENT)
-#define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION); versionAr[] = {VERSION_AR}
+#define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION_STR); versionAr[] = {VERSION_AR}
 
 #define GVARMAINS(var1,var2) ##var1##_##var2##
 #define GVARMAIN(var1) GVARMAINS(PREFIX,var1)

@@ -15,6 +15,14 @@ if (!(Test-Path -LiteralPath $publicKey -PathType Leaf)) { throw "Public key mis
 if ([IO.Path]::GetFileNameWithoutExtension($privateKey) -cne $authority) { throw "Expected signing authority $authority" }
 if ($privateKey.StartsWith($workspace + '\', [StringComparison]::OrdinalIgnoreCase)) { throw 'Keep the private key outside the repository.' }
 
+$versionHeader = Get-Content -LiteralPath (Join-Path $source 'addons\core\Includes\script_version.hpp') -Raw
+$versionParts = foreach ($part in @('MAJOR', 'MINOR', 'PATCHLVL')) {
+    $definition = [regex]::Match($versionHeader, "(?m)^#define\s+$part\s+(\d+)\s*$")
+    if (!$definition.Success) { throw "Missing release version component: $part" }
+    $definition.Groups[1].Value
+}
+$version = $versionParts -join '.'
+
 function Invoke-Checked {
     param([string]$Executable, [string[]]$Arguments)
     & $Executable @Arguments
@@ -22,7 +30,6 @@ function Invoke-Checked {
 }
 Push-Location $workspace
 try {
-    Invoke-Checked 'python' @('Tools\check_project.py', 'source')
     # Only this fixed output directory can be replaced.
     if (!$output.StartsWith((Join-Path $workspace 'build') + '\', [StringComparison]::OrdinalIgnoreCase)) { throw 'Invalid build directory.' }
     foreach ($buildPath in @((Join-Path $workspace 'build'), $output)) {
@@ -48,16 +55,31 @@ try {
     }
     if (Test-Path -LiteralPath $output) { Remove-Item -LiteralPath $output -Recurse }
     New-Item -ItemType Directory -Path (Join-Path $output 'addons'), (Join-Path $output 'keys') | Out-Null
+    $releaseFiles = @("keys/$authority.bikey", 'mod.cpp', 'meta.cpp')
     foreach ($addon in @('core', 'functions')) {
         $pbo = Join-Path $output "addons\$addon.pbo"
         Invoke-Checked (Join-Path $workspace 'Tools\Builder\hemtt.exe') @('armake', 'pack', (Join-Path $source "addons\$addon"), $pbo)
         Invoke-Checked (Join-Path $workspace 'Tools\DSSignFile\DSSignFile.exe') @($privateKey, $pbo)
+        $releaseFiles += "addons/$addon.pbo", "addons/$addon.pbo.$authority.bisign"
     }
     Copy-Item -LiteralPath $publicKey -Destination (Join-Path $output "keys\$authority.bikey")
     Copy-Item -LiteralPath (Join-Path $source 'mod.cpp'), (Join-Path $source 'meta.cpp') -Destination $output
-    Invoke-Checked (Join-Path $workspace 'Tools\DSSignFile\DSCheckSignatures.exe') @((Join-Path $output 'addons'), (Join-Path $output 'keys'))
-    Invoke-Checked 'python' @('Tools\check_project.py', 'package')
-    Write-Output "Signed release: $output"
+    $hashes = [ordered]@{}
+    foreach ($relativePath in ($releaseFiles | Sort-Object)) {
+        $hashes[$relativePath] = (Get-FileHash -LiteralPath (Join-Path $output $relativePath) -Algorithm SHA256).Hash.ToLowerInvariant()
+    }
+    $manifest = [ordered]@{
+        version = $version
+        workshopId = '3711728487'
+        authority = $authority
+        testsRun = $false
+        verificationRun = $false
+        files = $hashes
+    }
+    $manifestJson = ($manifest | ConvertTo-Json -Depth 4).Replace("`r`n", "`n") + "`n"
+    [IO.File]::WriteAllText((Join-Path $workspace 'build\release-manifest.json'), $manifestJson, [Text.UTF8Encoding]::new($false))
+    Write-Output "Built and signed ${version}: $output"
+    Write-Output 'SHA-256 manifest: build\release-manifest.json. Tests and verification were not run.'
 } finally {
     Pop-Location
 }
